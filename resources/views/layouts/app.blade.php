@@ -10,7 +10,9 @@
     <title>{{ config('app.name', 'Laravel') }}</title>
 
     <!-- Scripts -->
-    <script src="{{ asset('js/app.js') }}" defer></script>
+    <script src="{{ asset('js/app.js') }}" async defer></script>
+    {{-- <script src="{{ mix('/js/app.js') }}"></script> --}}
+    
 
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
@@ -23,9 +25,15 @@
     <div id="app">
         <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
             <div class="container">
-                <a class="navbar-brand d-flex" href="{{ url('/') }}">
-                    <div><img src="/svg/InstaClone.svg" alt="logo" style="max-height: 20px; border-right: 1px solid #333333;" class="pr-3"></div>
-                    <div class="pl-3">InstaClone</div>
+                @if (Auth::user())
+                <a class="navbar-brand d-flex" href="/profile/{{ Auth::user()->id }}">
+                @else
+                <a class="navbar-brand d-flex" href="">
+                @endif
+                    <div>
+                        <img src="/svg/InstaClone.svg" alt="logo" style="max-height: 20px; border-right: 1px solid #333333;" class="pr-3">
+                    </div>
+                    <a href="{{ url('/') }}" class="text-decoration-none"><div class="pl-3 text-dark font-weight-bold">InstaClone</div></a>
                 </a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                     <span class="navbar-toggler-icon"></span>
