@@ -5,8 +5,13 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PostsController;
 use App\Http\Controllers\ProfilesController;
+use App\Mail\NewUserWelcomeMail;
 
 Auth::routes();
+
+Route::get('/email', function () {
+    return new NewUserWelcomeMail();
+});
 
 Route::post('follow/{user}', [FollowsController::class, 'store']);
 
@@ -15,6 +20,9 @@ Route::get('/', [PostsController::class, 'index']);
 Route::get('/p/create', [PostsController::class, 'create']);
 Route::post('/p', [PostsController::class, 'store']);
 Route::get('/p/{post}', [PostsController::class, 'show']);
+Route::delete('/p/{post}', [PostsController::class, 'destroy']);
+Route::get('/p/{post}/edit', [PostsController::class, 'edit']);
+Route::patch('/p/{post}', [PostsController::class, 'update']);
 
 
 

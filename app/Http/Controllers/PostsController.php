@@ -18,21 +18,24 @@ class PostsController extends Controller
         
     }
 
+    public function welcome () {
+        
+        return view('welcome');
+    }
+
     public function index() {
 
         $users = auth()->user()->following()->pluck('profiles.user_id');
 
         $posts = Post::whereIn('user_id', $users)->with('user')->latest()->paginate(5);
 
+        // dd($posts[0]);
+
         return view('posts.index', [
             'posts' => $posts,
         ]);
 
-
-
     }
-
-
 
     public function create()
     {
@@ -72,8 +75,44 @@ class PostsController extends Controller
             
         ]);
 
-        
+    }
 
+    public function edit(Post $post) {
+
+        return view('posts.edit',[
+
+            'post' => $post,
+
+        ]);
 
     }
+
+    public function update(Post $post, Request $request)
+    {
+
+        
+        
+        
+
+        $attributes = request()->validate([
+
+            'caption' => 'required',
+            
+
+        ]);
+
+        $post->update($attributes);
+
+         return back();
+    }
+
+    public function destroy(Post $post) {
+
+        $post->delete();
+
+        return redirect('/profile/'. auth()->user()->id);
+    }
+    
+
+
 }
