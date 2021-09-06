@@ -1,7 +1,5 @@
 @extends('layouts.app')
 
-
-
 @section('content')
 
     @include('modals.edit')
@@ -26,12 +24,22 @@
                     </div>
 
                     <div>
+                        
+                        
                         <div class="font-weight-bold">
+
+                            
                             <a href="/profile/{{ $post->user->id }}"><span
-                                    class="text-dark">{{ $post->user->username }}</span>
+                                    class="text-dark">{{ $post->user->username }}
+                                
+                                
+                                </span>
                             </a>
-                            <a href="" class="pl-3">Follow</a>
+                          
+
+                            
                         </div>
+                       
                     </div>
 
                     <div class="dropdown show">
@@ -41,10 +49,10 @@
                         </a>
 
                         <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                            <a class="dropdown-item" href="#exampleModal" data-toggle="modal"
-                                data-target="#exampleModal">Edit</a>
-                            <a class="dropdown-item" href="#exampleModal" data-toggle="modal"
-                                data-target="#exampleModal2">Delete</a>
+                            <a class="dropdown-item" href="#editModal" data-toggle="modal"
+                                data-target="#editModal">Edit</a>
+                            <a class="dropdown-item" href="#deleteModal" data-toggle="modal"
+                                data-target="#deleteModal">Delete</a>
 
                         </div>
                     </div>
@@ -53,7 +61,7 @@
                 </div>
 
                 <hr>
-
+                
                 <p>
 
                     <span class="font-weight-bold">
@@ -64,6 +72,22 @@
 
                 </p>
 
+               
+                @if(Auth::user()->id == $post->user_id)
+                <p></p>
+                @else 
+                <p> @include('posts.comment')</p>
+                @endif
+
+                
+
+                @foreach ($post->comments as $comment)
+
+                <p><div>{{$comment->body}}</div></p>
+                
+                @endforeach
+
+               
             </div>
 
         </div>
