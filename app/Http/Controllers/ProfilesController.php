@@ -14,10 +14,6 @@ class ProfilesController extends Controller
     public function index(User $user)
     {
 
-       
-
-
-
         $postCount = Cache::remember(
             'count.posts' . $user->id,
             now()->addSeconds(30),

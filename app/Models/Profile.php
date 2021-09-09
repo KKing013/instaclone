@@ -34,6 +34,10 @@ class Profile extends Model
         return $this->belongsToMany(User::class);
     }
 
+    
+
+
+
 
 
 

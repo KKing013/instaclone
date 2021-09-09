@@ -6,14 +6,14 @@ use App\Models\User;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
+
+
 class Post extends Model
 {
 
-    protected $guarded = [];
-
-
-
-    use HasFactory;
+   protected $guarded = [];
+    
+   use HasFactory;
 
     public function user() {
 
@@ -27,4 +27,12 @@ class Post extends Model
 
         return $this->hasMany(Comment::class);
     }
+
+   
+
+  
+
+    
+
+   
 }

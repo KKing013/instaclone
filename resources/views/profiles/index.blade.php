@@ -22,13 +22,13 @@
                     <div class="d-flex align-items-center pb-3">
 
                         <div class="h4">{{ $user->username }}</div>
-                        
+
                         @cannot('update', $user->profile)
 
-                        <follow-button user-id="{{ $user->id }}" follows="{{ $follows }}"></follow-button> 
-                        
+                            <follow-button user-id="{{ $user->id }}" follows="{{ $follows }}"></follow-button>
+
                         @endcannot
-                        
+
                     </div>
 
 
@@ -64,16 +64,12 @@
                 <div>{{ $user->profile->description }}</div>
                 <div><a href="#">{{ $user->profile->url }}</a></div>
             </div>
-
-
-
-
-
         </div>
 
         <div class="row pt-5">
 
             @foreach ($user->posts as $post)
+
 
                 <div class="col-4 pb-4">
 
@@ -83,12 +79,7 @@
                 </div>
 
             @endforeach
-
-
-
         </div>
-
-
 
     </div>
 @endsection

@@ -1,20 +1,41 @@
-<form method="POST" action="/p/{{ $post->id }}/comments">
-    @csrf
+<div class="row d-flex justify-content-start">
+    <div class="col-lg-8 col-lg-12">
+        <div class="card shadow-0 border" style="background-color: #f0f2f5;">
 
-    <header class="d-flex align-items-center">
+            <div class="card-body p-2">
 
-    </header>
+                <div class="card mb-1">
 
-    <div class="form-group">
+                    <div class="card-body">
 
-        <textarea name="body" class="form-control" id="exampleFormControlTextarea1" rows="3" placeholder="Comment"
-            required></textarea>
+
+                        <div class="d-flex justify-content-between">
+
+
+                            <div class="d-flex flex-row align-items-center">
+
+                                <img src="{{ $comment->user->profile->profileImage() }}" alt=""
+                                    class="w-100 rounded-circle" style="max-width: 40px">
+
+                                <a href="/profile/{{ $comment->user->id }}">
+                                    <p class="font-weight-bold text-dark small mb-0 ms-2 ml-2">
+                                        {{ $comment->user->username }}
+
+
+                                    </p>
+                                </a>
+
+
+                            </div>
+
+                        </div>
+
+                        <p class="mt-2"> {{ $comment->body }}</p>
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
     </div>
-
-    <div class="form-group">
-
-        <button type="submit" class="btn btn-primary">Post</button>
-
-    </div>
-
-</form>
+</div>

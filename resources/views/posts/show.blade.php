@@ -2,9 +2,9 @@
 
 @section('content')
 
-    @include('modals.edit')
+    @include('modals.post-edit')
 
-    @include('modals.delete')
+    @include('modals.post-delete')
 
     <div class="container">
 
@@ -24,44 +24,50 @@
                     </div>
 
                     <div>
-                        
-                        
+
+
                         <div class="font-weight-bold">
 
-                            
+
                             <a href="/profile/{{ $post->user->id }}"><span
                                     class="text-dark">{{ $post->user->username }}
-                                
-                                
+
+
                                 </span>
                             </a>
-                          
 
-                            
-                        </div>
-                       
-                    </div>
 
-                    <div class="dropdown show">
-                        <a class="btn btn-info btn-sm dropdown-toggle ml-4" href="#" role="button" id="dropdownMenuLink"
-                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-
-                        </a>
-
-                        <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                            <a class="dropdown-item" href="#editModal" data-toggle="modal"
-                                data-target="#editModal">Edit</a>
-                            <a class="dropdown-item" href="#deleteModal" data-toggle="modal"
-                                data-target="#deleteModal">Delete</a>
 
                         </div>
+
                     </div>
+
+
+
+                    @if (Auth::user()->id == $post->user_id)
+
+                        <div class="dropdown show">
+                            <a class="btn btn-sm dropdown-toggle ml-4" href="#" role="button" id="dropdownMenuLink"
+                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+
+                            </a>
+
+                            <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                                <a class="dropdown-item" href="#posteditModal" data-toggle="modal"
+                                    data-target="#posteditModal">Edit</a>
+                                <a class="dropdown-item" href="#postdeleteModal" data-toggle="modal"
+                                    data-target="#postdeleteModal">Delete</a>
+
+                            </div>
+                        </div>
+
+                    @endif
 
 
                 </div>
 
                 <hr>
-                
+
                 <p>
 
                     <span class="font-weight-bold">
@@ -72,26 +78,21 @@
 
                 </p>
 
-               
-                @if(Auth::user()->id == $post->user_id)
-                <p></p>
-                @else 
-                <p> @include('posts.comment')</p>
+
+                @if (Auth::user()->id != $post->user_id)
+                    <p> @include('posts.add-comment')</p>
                 @endif
 
-                
 
                 @foreach ($post->comments as $comment)
 
-                <p><div>{{$comment->body}}</div></p>
-                
+                    @include('posts.comment')
+
                 @endforeach
 
-               
             </div>
 
         </div>
-
     </div>
 
 @endsection

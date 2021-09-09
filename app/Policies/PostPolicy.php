@@ -54,6 +54,7 @@ class PostPolicy
      */
     public function update(User $user, Post $post)
     {
+        return $post->user_id;
            
     }
 

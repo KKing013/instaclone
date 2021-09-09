@@ -10,24 +10,25 @@ use App\Http\Controllers\PostCommentsController;
 
 Auth::routes();
 
+// Email template
 Route::get('/email', function () {
     return new NewUserWelcomeMail();
 });
 
+// Following
 Route::post('follow/{user}', [FollowsController::class, 'store']);
 
 // Posts
-Route::get('/', [PostsController::class, 'index']);
-Route::get('/p/create', [PostsController::class, 'create']);
+Route::get('/', [PostsController::class, 'index'])->name('post.index');
+Route::get('/p/create', [PostsController::class, 'create'])->name('post.create');
 Route::post('/p', [PostsController::class, 'store']);
-Route::get('/p/{post}', [PostsController::class, 'show']);
-Route::delete('/p/{post}', [PostsController::class, 'destroy']);
-Route::get('/p/{post}/edit', [PostsController::class, 'edit']);
-Route::patch('/p/{post}', [PostsController::class, 'update']);
+Route::get('/p/{post}', [PostsController::class, 'show'])->name('post.show');
+Route::get('/p/{post}/edit', [PostsController::class, 'edit'])->name('post.edit');
+Route::patch('/p/{post}', [PostsController::class, 'update'])->name('post.update');
+Route::delete('/p/{post}', [PostsController::class, 'destroy'])->name('post.delete');
 
+// Comments
 Route::post('p/{post}/comments', [PostCommentsController::class, 'store']);
-
-
 
 // Profile
 Route::get('/profile/{user}', [ProfilesController::class, 'index'])->name('profile.show');
