@@ -7,7 +7,7 @@
 <a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
 </p>
 
-> ### Movie database application with integrated API.
+> ### Instagram clone with simple instagram-like functionality.
           
     Popular movies and current movies pulled from API 
     Information on each movie
