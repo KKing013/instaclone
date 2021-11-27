@@ -9,14 +9,12 @@
 
 > ### Instagram clone with simple instagram-like functionality.
           
-    Popular movies and current movies pulled from API 
-    Information on each movie
-    Popular tv shows and current tv shows pulled from API
-    Information on each tv show
-    Search functionality for movies and tv shows
-    Information on actors
-
-
+    User registration and authentication      
+    Create a profile as a user
+    Each user can follow other profiles
+    Newsfeed will appear of users you follow
+    Users can comment on posts of people they follow
+    
 ----------
 
 # Getting started
@@ -28,11 +26,11 @@ Please check the official laravel installation guide for server requirements bef
 
 Clone the repository
 
-    git clone git@github.com:KKing013/movie-app.git
+    git clone git@github.com:KKing013/instaclone-app.git
 
 Switch to the repo folder
 
-    cd movie-app
+    cd instaclone-app
 
 Install all the dependencies using composer
 
@@ -59,7 +57,7 @@ You can now access the server at http://localhost:8000
 **TL;DR command list**
 
     git clone git@github.com:KKing013/movie-app.git
-    cd movie-app
+    cd instaclone-app
     composer install
     cp .env.example .env
     php artisan key:generate
