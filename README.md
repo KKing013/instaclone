@@ -7,7 +7,7 @@
 <a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
 </p>
 
-> ### Instagram clone with simple instagram-like functionality.
+> ### Social application with simple instagram-like functionality. 
           
     User registration and authentication      
     Create a profile as a user
